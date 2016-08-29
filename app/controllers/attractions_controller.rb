@@ -5,20 +5,24 @@ class AttractionsController < ApplicationController
   # GET /attractions.json
   def index
     @attractions = Attraction.all
+    @destinations = Destination.all
   end
 
   # GET /attractions/1
   # GET /attractions/1.json
   def show
+    @destinations = Destination.all
   end
 
   # GET /attractions/new
   def new
     @attraction = Attraction.new
+    @destinations = Destination.all
   end
 
   # GET /attractions/1/edit
   def edit
+    @destinations = Destination.all
   end
 
   # POST /attractions
@@ -69,6 +73,6 @@ class AttractionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def attraction_params
-      params.require(:attraction).permit(:name)
+      params.require(:attraction).permit(:name, :destination_id)
     end
 end

@@ -2,10 +2,11 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
+    <%= f.input :user_id, as: :hidden, input_html: {value: current_user.id} %>
     <%= f.input :title %>
-    <%= f.input :author_id %>
+    <%= f.input :image, label: "Upload an image" %>
     <%= f.input :content %>
-    <%= f.input :attraction_id %>
+    <%= f.association :attraction, as: :select, prompt: "Select an attraction." %>
   </div>
 
   <div class="form-actions">

@@ -7,8 +7,10 @@
 
 <p>
   <strong>Author:</strong>
-  <%= @review.author_id %>
+  <%= @review.user.username %>
 </p>
+
+<image src="<%= @review.image %>", width="100%">
 
 <p>
   <strong>Content:</strong>
@@ -17,8 +19,7 @@
 
 <p>
   <strong>Attraction:</strong>
-  <%= @review.attraction_id %>
-</p>
+  <% if @review.attraction_id != nil %><%= @review.attraction.name %> <% else %> <%= "(No associated attraction)" %><% end %>
 
 <%= link_to 'Edit', edit_review_path(@review) %> |
 <%= link_to 'Back', reviews_path %>
