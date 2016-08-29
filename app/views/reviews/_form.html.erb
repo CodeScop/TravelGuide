@@ -5,8 +5,9 @@
     <%= f.input :user_id, as: :hidden, input_html: {value: current_user.id} %>
     <%= f.input :title %>
     <%= f.input :image, label: "Upload an image" %>
-    <%= f.input :content %>
-    <%= f.association :attraction, as: :select, prompt: "Select an attraction." %>
+    <%= f.input :content, label: "Review" %>
+    <%= f.association :attraction, as: :select, prompt: "Select an attraction" %>
+    <%= f.input :rating, collection: 1..5, prompt: "Select rating" %>
   </div>
 
   <div class="form-actions">

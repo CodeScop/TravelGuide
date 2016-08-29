@@ -14,5 +14,5 @@ Destination.create!([
   {name: "New York City, NY, USA"}
 ])
 Review.create!([
-  {title: "History of London", content: "The Tower of London was one of the serious highlights of my time in the city. Yes, it's a conventional touristy thing to do, but it's a great slice of London history since the Norman Conquest. Plus, a lot of different things to do.", attraction_id: 1, user_id: 1, destination_id: nil, image_file_name: "IMG_1653.jpg", image_content_type: "image/jpeg", image_file_size: 5902663, image_updated_at: "2016-08-29 17:57:27"}
+  {title: "History of London", content: "The Tower of London was one of the serious highlights of my time in the city. Yes, it's a conventional touristy thing to do, but it's a great slice of London history since the Norman Conquest. Plus, a lot of different things to do.", attraction_id: 1, user_id: 1, destination_id: nil, image_file_name: "IMG_1667.jpg", image_content_type: "image/jpeg", image_file_size: 4706479, image_updated_at: "2016-08-29 20:02:33", rating: 5}
 ])
