@@ -1,9 +1,44 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @destination.name %>
-</p>
+<h2><%= @destination.name %></h2>
 
-<%= link_to 'Edit', edit_destination_path(@destination) %> |
-<%= link_to 'Back', destinations_path %>
+
+<h4>Attractions</h4>
+<div class="row">
+   <% @attractions.each do |attraction| %>
+    <div class="col-md-3">
+    <div class="well center-it">
+        <h4><%= link_to attraction.name, attraction %></h4>
+        <p><%= attraction.description %></p>
+        <a href="#" data-toggle="modal" data-target="#myModal_<%= attraction.id %>">
+        <span class="glyphicon glyphicon-sunglasses"> Quick Peek </span></a>
+    </div>
+    </div>
+
+    <div id="myModal_<%= attraction.id %>" class="modal fade" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title"><%= attraction.name %></h4>
+        </div>
+        <div class="modal-body">
+          <p><strong>Description </strong><%= attraction.description %></p>
+          <p><strong> Hours: </strong> 
+		<td><%= attraction.hours %></p>
+		<p><strong> Cost: </strong><%= attraction.cost %></p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary"><%= link_to "See Full Page", attraction %></button>
+        </div>
+      </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+   <% end %>
+</div>
+
+<% if current_user %>
+<button type="button" class="btn btn-success"><%= link_to 'New Attraction', new_attraction_path %></button>
+<button type="button" class="btn btn-warning"><%= link_to 'Edit', edit_destination_path %></button>
+<% end %>
+<button type="button" class="btn btn-info"><%= link_to 'Back', attractions_path %></button>

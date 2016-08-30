@@ -5,20 +5,24 @@ class DestinationsController < ApplicationController
   # GET /destinations.json
   def index
     @destinations = Destination.all
+    @attractions =  Attraction.all
   end
 
   # GET /destinations/1
   # GET /destinations/1.json
   def show
+    @attractions = Attraction.where(destination_id: @destination.id).order('created_at DESC')
   end
 
   # GET /destinations/new
   def new
     @destination = Destination.new
+    @attractions =  Attraction.all
   end
 
   # GET /destinations/1/edit
   def edit
+    @attractions =  Attraction.all
   end
 
   # POST /destinations

@@ -4,7 +4,7 @@
 <h2><%= @review.title %></h2><p>
 <p>
   <strong>Attraction:</strong>
-  <% if @review.attraction_id != nil %><%= link_to @review.attraction.name, attraction_path(@review.attraction_id %> <% else %>"(No associated attraction)"<% end %>
+  <% if @review.attraction_id != nil %><%= link_to @review.attraction.name, attraction_path(@review.attraction_id) %> <% else %>"(No associated attraction)"<% end %>
 </p>
 <p>
   <strong>Rating:</strong>
