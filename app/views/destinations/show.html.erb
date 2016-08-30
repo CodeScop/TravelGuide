@@ -2,7 +2,7 @@
 
 <h2><%= @destination.name %></h2>
 
-<image src="<%= @destination.image %>", width="100%" position="center">
+<%= render "destinations/map" %>
 
 <h4>Attractions</h4>
 
@@ -42,4 +42,5 @@
 <button type="button" class="btn btn-success"><%= link_to 'New Attraction', new_attraction_path %></button>
 <button type="button" class="btn btn-warning"><%= link_to 'Edit', edit_destination_path %></button>
 <% end %>
-<button type="button" class="btn btn-info"><%= link_to 'Back', destinations_path %></button>
+<button type="button" class="btn btn-info"><%= link_to 'Back', destinations_path %></button><br><br>
+<image src="<%= @destination.image %>", width="100%" position="center">
