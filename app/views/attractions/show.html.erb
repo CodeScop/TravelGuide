@@ -53,5 +53,6 @@
 
 <% if current_user %>
 <button type="button" class="btn btn-warning"><%= link_to 'Edit', edit_attraction_path(@attraction) %></button>
+<button type="button" class="btn btn-danger"><%= link_to "Delete", @attraction, method: :delete %></button>
 <% end %>
 <button type="button" class="btn btn-info"><%= link_to 'Back', attractions_path %></button>
