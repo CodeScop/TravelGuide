@@ -12,7 +12,7 @@ class AttractionsController < ApplicationController
   # GET /attractions/1.json
   def show
     @reviews = Review.where(attraction_id: @attraction.id).order('created_at DESC')
-    @destination = Destination.find_by(id: :destination_id)
+    @destinations = Destination.all
   end
 
   # GET /attractions/new

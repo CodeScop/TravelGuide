@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h2><%= @attraction.name %></h2>
-<h4><%= link_to @attraction.destination.name %></h4>
+<h4><%= link_to @attraction.destination.name, destination_path(@attraction.destination_id) %></h4>
 <p><em><%= @attraction.description %></em></p><br>
 
 <h4>Quick Facts</h4>
