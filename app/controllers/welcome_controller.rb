@@ -1,7 +1,7 @@
 class WelcomeController < ApplicationController
  def show
  	     if current_user
-         redirect_to attractions_path
+         redirect_to destinations_path
      end
   end
 end

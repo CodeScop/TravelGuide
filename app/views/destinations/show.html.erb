@@ -2,8 +2,10 @@
 
 <h2><%= @destination.name %></h2>
 
+<image src="<%= @destination.image %>", width="100%" position="center">
 
 <h4>Attractions</h4>
+
 <div class="row">
    <% @attractions.each do |attraction| %>
     <div class="col-md-3">
@@ -24,8 +26,7 @@
         </div>
         <div class="modal-body">
           <p><strong>Description </strong><%= attraction.description %></p>
-          <p><strong> Hours: </strong> 
-		<td><%= attraction.hours %></p>
+          <p><strong> Hours: </strong> <%= attraction.hours %></p>
 		<p><strong> Cost: </strong><%= attraction.cost %></p>
         </div>
         <div class="modal-footer">
@@ -41,4 +42,4 @@
 <button type="button" class="btn btn-success"><%= link_to 'New Attraction', new_attraction_path %></button>
 <button type="button" class="btn btn-warning"><%= link_to 'Edit', edit_destination_path %></button>
 <% end %>
-<button type="button" class="btn btn-info"><%= link_to 'Back', attractions_path %></button>
+<button type="button" class="btn btn-info"><%= link_to 'Back', destinations_path %></button>
