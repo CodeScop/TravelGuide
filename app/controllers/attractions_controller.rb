@@ -11,7 +11,8 @@ class AttractionsController < ApplicationController
   # GET /attractions/1
   # GET /attractions/1.json
   def show
-    @destinations = Destination.all
+    @reviews = Review.where(attraction_id: @attraction.id).order('created_at DESC')
+    @destination = Destination.find_by(id: :destination_id)
   end
 
   # GET /attractions/new
@@ -73,6 +74,6 @@ class AttractionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def attraction_params
-      params.require(:attraction).permit(:name, :destination_id)
+      params.require(:attraction).permit(:name, :destination_id, :description, :hours, :cost)
     end
 end

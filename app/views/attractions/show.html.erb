@@ -1,9 +1,57 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @attraction.name %>
-</p>
+<h2><%= @attraction.name %></h2>
+<h4><%= link_to @attraction.destination.name %></h4>
+<p><em><%= @attraction.description %></em></p><br>
+
+<h4>Quick Facts</h4>
+<table class="table">
+	<tr>
+		<td><strong> Hours: </strong></td> 
+		<td><%= @attraction.hours %></td></tr>
+	<tr>
+		<td><strong> Cost: </strong></td> 
+		<td><%= @attraction.cost %></td></tr>
+</table>
+
+<h4>User Reviews</h4>
+<div class="row">
+   <% @reviews.each do |review| %>
+    <div class="col-md-3">
+    <div class="well center-it">
+        <h4><%= link_to review.title, review %></h4>
+        <p><strong>Attraction:</strong><% if review.attraction_id != nil %><%= review.attraction.name %> <% else %>"(No associated attraction)"<% end %></p>
+        <p><strong>Rating:</strong>
+        <% if review.rating != nil %> <%= review.rating %> stars <% else %> <%= "none" %><% end %></p>
+        <%= image_tag review.image.url(:thumb) %>
+        <a href="#" data-toggle="modal" data-target="#myModal_<%= review.id %>">
+        <span class="glyphicon glyphicon-plus"> More </span></a>
+    </div>
+    </div>
+
+    <div id="myModal_<%= review.id %>" class="modal fade" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title"><%= review.title %></h4>
+        </div>
+        <div class="modal-body">
+          <p><strong>Attraction: </strong><% if review.attraction_id != nil %><%= review.attraction.name %> <% else %>"(No associated attraction)"<% end %></p>
+          <p>By <%= gravatar_tag review.user.email, size: 20 %> <%= review.user.username %></p>
+          <p><%= truncate(review.content, :length => 100) %><%= link_to "Read More", @review %></p>
+          <p>Posted: <%= time_ago_in_words(review.created_at) %> ago </p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary"><%= link_to "See Full Page", review %></button>
+        </div>
+      </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+   <% end %>
+</div>
+
+<button type="button" class="btn btn-primary"><%= link_to 'New Review', new_review_path %></button>
 
 <%= link_to 'Edit', edit_attraction_path(@attraction) %> |
 <%= link_to 'Back', attractions_path %>
