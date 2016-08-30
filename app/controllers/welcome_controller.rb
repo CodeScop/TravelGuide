@@ -1,4 +1,7 @@
 class WelcomeController < ApplicationController
-  def show
+ def show
+ 	     if current_user
+         redirect_to attractions_path
+     end
   end
 end
